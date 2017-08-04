@@ -122,6 +122,9 @@
                                                 <state key="normal" title="Take or Choose Photo">
                                                     <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="takeOrChooseImagePress:" destination="I0o-wi-eoX" eventType="touchUpInside" id="61S-iB-gWX"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L39-vP-SIx">
                                                 <rect key="frame" x="23" y="440" width="70" height="32"/>
@@ -288,6 +291,14 @@
                     </tabBarItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="900"/>
+                    <connections>
+                        <outlet property="amountTextField" destination="Yq9-ra-fu5" id="60L-O1-JJB"/>
+                        <outlet property="categoryTextField" destination="3Ho-dH-2aI" id="KpH-7j-7vJ"/>
+                        <outlet property="datePickerText" destination="Nob-av-3aD" id="UcE-uD-7dz"/>
+                        <outlet property="imageVIew" destination="1Xh-Cr-ehv" id="qJZ-nE-h2V"/>
+                        <outlet property="locationTextField" destination="7Lt-pc-5gP" id="iMH-4D-nmz"/>
+                        <outlet property="takeOrChooseImageButton" destination="SeA-7M-hrF" id="Mfw-Z5-PYX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YM8-fs-IAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
