@@ -109,7 +109,6 @@ class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         //format Date
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .short
         
         datePickerText.text = dateFormatter.string(from: datePicker.date)
         self.view.endEditing(true)

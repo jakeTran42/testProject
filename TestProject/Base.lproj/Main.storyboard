@@ -214,6 +214,12 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tb-rB-zFX">
+                                                <rect key="frame" x="222" y="574" width="11" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -233,6 +239,7 @@
                                             <constraint firstItem="u0g-kY-3XT" firstAttribute="top" secondItem="SeA-7M-hrF" secondAttribute="bottom" constant="35" id="Qf5-aA-bBA"/>
                                             <constraint firstItem="Yq9-ra-fu5" firstAttribute="baseline" secondItem="7Lt-pc-5gP" secondAttribute="baseline" id="R4J-5b-yfY"/>
                                             <constraint firstItem="7Lt-pc-5gP" firstAttribute="top" secondItem="Fkz-oO-E5g" secondAttribute="bottom" constant="8" symbolic="YES" id="SOH-23-mBl"/>
+                                            <constraint firstItem="6Tb-rB-zFX" firstAttribute="centerY" secondItem="Yq9-ra-fu5" secondAttribute="centerY" id="T1E-Fa-FwF"/>
                                             <constraint firstItem="Nob-av-3aD" firstAttribute="leading" secondItem="uVj-L7-kYI" secondAttribute="leadingMargin" id="TVJ-lg-rjQ"/>
                                             <constraint firstItem="Fkz-oO-E5g" firstAttribute="leading" secondItem="L39-vP-SIx" secondAttribute="leading" id="UAv-Zs-ajj"/>
                                             <constraint firstItem="3Ho-dH-2aI" firstAttribute="baseline" secondItem="Nob-av-3aD" secondAttribute="baseline" id="XSM-fB-Ja4"/>
@@ -248,6 +255,7 @@
                                             <constraint firstItem="Yq9-ra-fu5" firstAttribute="leading" secondItem="3Ho-dH-2aI" secondAttribute="leading" id="jpI-0w-RHy"/>
                                             <constraint firstItem="AMP-ia-cKs" firstAttribute="top" secondItem="7Lt-pc-5gP" secondAttribute="bottom" constant="28" id="nwO-ts-Qzy"/>
                                             <constraint firstItem="AMP-ia-cKs" firstAttribute="leading" secondItem="Fkz-oO-E5g" secondAttribute="leading" id="oNA-OL-mqw"/>
+                                            <constraint firstItem="Yq9-ra-fu5" firstAttribute="leading" secondItem="6Tb-rB-zFX" secondAttribute="trailing" constant="8" symbolic="YES" id="oRF-wA-fpt"/>
                                             <constraint firstAttribute="bottom" secondItem="wu4-M3-9Us" secondAttribute="bottom" constant="13" id="q3m-Po-1SZ"/>
                                             <constraint firstAttribute="trailing" secondItem="wlU-QG-u5w" secondAttribute="trailing" constant="76" id="xn1-uu-ZxR"/>
                                         </constraints>
@@ -317,7 +325,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="tab_home_black" id="azM-UL-0d3">
+                    <tabBarItem key="tabBarItem" title="" image="mostviewed" id="azM-UL-0d3">
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
                 </viewController>
@@ -327,7 +335,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="tab_home_black" width="25" height="25"/>
+        <image name="mostviewed" width="25" height="25"/>
         <image name="tab_plus_black" width="25" height="25"/>
         <image name="tab_profile_black" width="25" height="25"/>
     </resources>
