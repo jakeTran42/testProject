@@ -8,18 +8,24 @@
 
 import Foundation
 import UIKit
+import Firebase
+import FirebaseStorage
 
 class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var imageVIew: UIImageView!
     @IBOutlet weak var takeOrChooseImageButton: UIButton!
     @IBOutlet weak var datePickerText: UITextField!
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextView!
+    
+    var pickedImage: UIImage?
     
     //VarCategoryPicker
-    var categoryData = ["Entertainment", "Food", "Grocery", "Ultility", "Banking", "Shopping", "Travel", "Others"]
+    var categoryData = ["", "Entertainment", "Food", "Grocery", "Ultility", "Banking", "Shopping", "Travel", "Others"]
     var categoryPicker = UIPickerView()
     
     override func viewDidLoad() {
@@ -45,6 +51,8 @@ class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
     
     @IBAction func takeOrChooseImagePress(_ sender: Any) {
         let imagePickerController = UIImagePickerController()
@@ -78,6 +86,9 @@ class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageVIew.image = image
+        
+        pickedImage = image
+        
         
         picker.dismiss(animated: true, completion: nil)
     }
@@ -142,6 +153,67 @@ class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         return allowedCharacters.isSuperset(of: characterSet)
     }
 
-    
-    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        
+        var imageURL = ""
+        
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        // 1
+        //create data type to put it to Firebase Storage
+        guard let imageData = UIImageJPEGRepresentation(pickedImage!, 0.1) else {
+            return
+        }
+        
+        // 2
+        //create a reference where you will be putting your imageData
+        let rightNow = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss EEE"
+        let timeStampForImage = formatter.string(from: rightNow)
+        let imageRef = Storage.storage().reference().child(timeStampForImage)
+
+        imageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
+            // 3
+            if let error = error {
+                assertionFailure(error.localizedDescription)
+                return
+            }
+            
+            // 4
+            let urlString = metadata?.downloadURL()?.absoluteString
+            
+            print("image url: \(urlString)")
+            if urlString != nil {
+                imageURL = urlString!
+
+                dispatchGroup.leave()
+            }
+        })
+        
+        
+        
+        dispatchGroup.notify(queue: .main) { 
+            print("successfully uploaded image")
+            let newReceipt = Receipt(imageURL: imageURL, title: self.titleTextField.text!, description: self.descriptionTextField.text, category: self.categoryTextField.text!, date: self.datePickerText.text!, location: self.locationTextField.text!, amount: Double(self.amountTextField.text!)!)
+            let values = newReceipt.dictionaryToPostOnFirebase
+            
+
+            
+            
+            let receiptRef = Database.database().reference().child("receipts").child(User.current.uid).childByAutoId()
+            receiptRef.updateChildValues(values!, withCompletionBlock: { (err, ref) in
+                if let _ = err {
+                    return
+                }
+                
+                
+                ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                    let justPostedReceipt = Receipt(snapshot: snapshot)
+                    print("New receipt was created! Title: \(justPostedReceipt?.title)")
+                
+                })
+            })
+        }
+    }
 }

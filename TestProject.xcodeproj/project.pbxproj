@@ -17,6 +17,8 @@
 		6BFC4A1C1F34F9DD00D5C6F4 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFC4A1B1F34F9DD00D5C6F4 /* LoginController.swift */; };
 		6BFC4A1E1F3516FB00D5C6F4 /* AddNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFC4A1D1F3516FB00D5C6F4 /* AddNewViewController.swift */; };
 		6BFC4A201F35170F00D5C6F4 /* HomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFC4A1F1F35170F00D5C6F4 /* HomeListViewController.swift */; };
+		6BFC4A251F3908D700D5C6F4 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFC4A241F3908D700D5C6F4 /* Receipt.swift */; };
+		6BFC4A271F390D3500D5C6F4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFC4A261F390D3500D5C6F4 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		6BFC4A1B1F34F9DD00D5C6F4 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		6BFC4A1D1F3516FB00D5C6F4 /* AddNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewViewController.swift; sourceTree = "<group>"; };
 		6BFC4A1F1F35170F00D5C6F4 /* HomeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeListViewController.swift; sourceTree = "<group>"; };
+		6BFC4A241F3908D700D5C6F4 /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Receipt.swift; path = Models/Receipt.swift; sourceTree = "<group>"; };
+		6BFC4A261F390D3500D5C6F4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		C462DCCAE635E93042CD9DDC /* Pods_TestProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -85,6 +89,8 @@
 				6BFC4A0E1F34F7AA00D5C6F4 /* LaunchScreen.storyboard */,
 				6BFC4A111F34F7AA00D5C6F4 /* Info.plist */,
 				6BFC4A171F34F82700D5C6F4 /* GoogleService-Info.plist */,
+				6BFC4A281F390F6300D5C6F4 /* Models */,
+				6BFC4A231F38EB8100D5C6F4 /* Extensions */,
 			);
 			path = TestProject;
 			sourceTree = "<group>";
@@ -106,6 +112,22 @@
 				6BFC4A091F34F7AA00D5C6F4 /* Main.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		6BFC4A231F38EB8100D5C6F4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		6BFC4A281F390F6300D5C6F4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6BFC4A261F390D3500D5C6F4 /* User.swift */,
+				6BFC4A241F3908D700D5C6F4 /* Receipt.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		EC31E27D9CF3ABEA274A5D27 /* Frameworks */ = {
@@ -240,11 +262,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BFC4A251F3908D700D5C6F4 /* Receipt.swift in Sources */,
 				6BFC4A081F34F7AA00D5C6F4 /* ProfileViewController.swift in Sources */,
 				6BFC4A201F35170F00D5C6F4 /* HomeListViewController.swift in Sources */,
 				6BFC4A1C1F34F9DD00D5C6F4 /* LoginController.swift in Sources */,
 				6BFC4A061F34F7AA00D5C6F4 /* AppDelegate.swift in Sources */,
 				6BFC4A1E1F3516FB00D5C6F4 /* AddNewViewController.swift in Sources */,
+				6BFC4A271F390D3500D5C6F4 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

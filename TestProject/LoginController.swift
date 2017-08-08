@@ -14,6 +14,8 @@ import FirebaseAuth.FIRUser
 
 class LoginController: UIViewController {
     
+    typealias FIRUser = FirebaseAuth.User
+    
     let inputContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
@@ -54,7 +56,24 @@ class LoginController: UIViewController {
                 return
             }
             
-            self.dismiss(animated: true, completion: nil)
+            let userRef = Database.database().reference().child("users").child((user?.uid)!)
+            userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let newUser = User(snapshot: snapshot) else {
+                    return
+                }
+                
+                
+                User.setCurrent(newUser)
+                print("Signed in successfully and created a User object")
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+
+                }
+
+                
+            })
+            
+            
         }
     }
     
@@ -64,7 +83,7 @@ class LoginController: UIViewController {
             print("Form is not valid")
             return
         }
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (user: User?, Error) in
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (user: FIRUser?, Error) in
             
             if Error != nil {
                 print(Error!)
@@ -76,7 +95,8 @@ class LoginController: UIViewController {
             }
             
             //Auth User COmplete
-            let ref = Database.database().reference(fromURL: "https://testproject-afc1e.firebaseio.com/")
+//            let ref = Database.database().reference(fromURL: "https://testproject-afc1e.firebaseio.com/")
+            let ref = Database.database().reference()
             let usersReference = ref.child("users").child(uid)
             let values = ["name": name, "email": email]
             usersReference.updateChildValues(values, withCompletionBlock: { (Err, ref) in
@@ -85,9 +105,23 @@ class LoginController: UIViewController {
                     return
                 }
                 
-                //Login Sucessfully
-                self.dismiss(animated: true, completion: nil)
+                //create a User instance and make it current user for your app
+                ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                    guard let newUser = User(snapshot: snapshot) else {
+                        print("Could not create a new user")
+                        return
+                    }
+                    
+                    
+                    User.setCurrent(newUser)
+                    print("New user is created!")
+                    DispatchQueue.main.async {
+                        //Login Sucessfully
+                        self.dismiss(animated: true, completion: nil)
+                    }
+
                 
+                })
             })
         })
         print("1")
