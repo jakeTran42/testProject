@@ -55,19 +55,22 @@
             </objects>
             <point key="canvasLocation" x="415.19999999999999" y="-562.66866566716647"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="kOf-wQ-KwL">
             <objects>
-                <tabBarController id="M0q-xy-GuK" sceneMemberID="viewController">
+                <tabBarController id="M0q-xy-GuK" customClass="TabBarViewController" customModule="TestProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Awa-ES-8Vt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.32549019610000002" green="0.6588235294" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="cic-k5-1pH" kind="relationship" relationship="viewControllers" id="CpG-ww-ARm"/>
                         <segue destination="KV4-9a-MAd" kind="relationship" relationship="viewControllers" id="JbF-DK-vZ6"/>
                         <segue destination="I0o-wi-eoX" kind="relationship" relationship="viewControllers" id="iSg-Ri-b7y"/>
-                        <segue destination="cic-k5-1pH" kind="relationship" relationship="viewControllers" id="CpG-ww-ARm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bm-l2-7RJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -91,6 +94,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="iWY-BW-QI4"/>
                                 </constraints>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="New Transaction" id="DSa-gt-G1J">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="iQr-Ho-flw"/>
@@ -326,9 +333,10 @@
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="E7w-BO-Cwl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="E7w-BO-Cwl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -339,7 +347,7 @@
             </objects>
             <point key="canvasLocation" x="-537.68115942028987" y="515.21739130434787"/>
         </scene>
-        <!--Home List View Controller-->
+        <!--List of Transaction-->
         <scene sceneID="ZX8-65-JPZ">
             <objects>
                 <tableViewController id="bdi-HC-2Z4" customClass="HomeListViewController" customModule="TestProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -362,11 +370,11 @@
                             <outlet property="delegate" destination="bdi-HC-2Z4" id="oSM-cp-qaJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="eSA-v0-PXz"/>
+                    <navigationItem key="navigationItem" title="List of Transaction" id="eSA-v0-PXz"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VqM-4G-rug" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="300" y="514.4021739130435"/>
+            <point key="canvasLocation" x="312" y="515"/>
         </scene>
     </scenes>
     <resources>

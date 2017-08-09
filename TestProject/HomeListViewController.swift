@@ -15,19 +15,17 @@ class HomeListViewController: UITableViewController {
     
     let cellID = "cellID"
     
+    var reciepts = [Receipt]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "List of Transaction"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        fetchUser()
+        fetchData()
         
     }
     
-    func fetchUser() {
-        Database.database().reference().child("receipts").child(User.current.uid).observe(.childAdded, with: { (snapshot) in
-            print(snapshot)
-        })
-    }
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
