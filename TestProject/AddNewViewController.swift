@@ -30,8 +30,6 @@ class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageVIew.layer.cornerRadius = 12
-        takeOrChooseImageButton.layer.cornerRadius = 12
         
         //creatingDatePicker
         createDatePicker()
@@ -44,6 +42,36 @@ class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         //AmounttextFieldConfig
         amountTextField.keyboardType = UIKeyboardType.numberPad
         self.amountTextField.delegate = self
+        
+        //textFieldConfig
+        self.descriptionTextField.layer.borderColor = UIColor.gray.cgColor
+        self.descriptionTextField.layer.borderWidth = 1.5
+        self.descriptionTextField.layer.cornerRadius = 6
+        
+        imageVIew.layer.cornerRadius = 12
+        takeOrChooseImageButton.layer.cornerRadius = 12
+        self.imageVIew.layer.borderColor = UIColor.gray.cgColor
+        self.imageVIew.layer.borderWidth = 1.5
+        
+        self.amountTextField.layer.borderColor = UIColor.gray.cgColor
+        self.amountTextField.layer.borderWidth = 1.5
+        self.amountTextField.layer.cornerRadius = 6
+        
+        self.locationTextField.layer.borderColor = UIColor.gray.cgColor
+        self.locationTextField.layer.borderWidth = 1.5
+        self.locationTextField.layer.cornerRadius = 6
+        
+        self.categoryTextField.layer.borderColor = UIColor.gray.cgColor
+        self.categoryTextField.layer.borderWidth = 1.5
+        self.categoryTextField.layer.cornerRadius = 6
+        
+        self.datePickerText.layer.borderColor = UIColor.gray.cgColor
+        self.datePickerText.layer.borderWidth = 1.5
+        self.datePickerText.layer.cornerRadius = 6
+        
+        self.titleTextField.layer.borderColor = UIColor.gray.cgColor
+        self.titleTextField.layer.borderWidth = 1.5
+        self.titleTextField.layer.cornerRadius = 6
     }
     
     let datePicker = UIDatePicker()

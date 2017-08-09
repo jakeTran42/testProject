@@ -14,7 +14,7 @@ class Receipt {
     var imageURL: String!
     var title: String!
     var description: String?
-    var category: String!
+    var category: String?
     var date: String!
     var location: String?
     var amount: Double!

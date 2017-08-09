@@ -12,4 +12,9 @@ import FirebaseAuthUI
 
 class HomeListViewController: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
 }
