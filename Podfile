@@ -10,5 +10,6 @@ target ‘TestProject’ do
   pod 'FirebaseUI/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'Kingfisher'
 
 end

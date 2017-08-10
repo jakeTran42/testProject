@@ -14,6 +14,7 @@ import FirebaseDatabase
 class HomeListViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
+    
     var receipts = [Receipt]()
     
     override func viewDidLoad() {
@@ -21,9 +22,10 @@ class HomeListViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         tableView.dataSource = self
         
+        
+        
         fetchData()
         
-        //var receipts = Receipt(imageURL: "1", title: "2", description: "3", category: "4", date: "5", location: "6", amount: 44)
     }
     
     func fetchData() {
@@ -55,8 +57,25 @@ extension HomeListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FetchCell", for: indexPath)
-        cell.textLabel?.text = receipts[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FetchCell", for: indexPath) as! FetchCell
+
+        
+        let receipt = receipts[indexPath.row]
+        
+        let amount2 = String(receipt.amount)
+        
+        cell.nameCellTitle.text = receipt.title
+        cell.dateCellTitle.text = receipt.date
+        cell.amountCellTitle.text = amount2
+        cell.categoryCellTitle.text = receipt.category
+        cell.locationcellTitle.text = receipt.location
+        cell.descriptionCellTitle.text = receipt.description
+        
+        if let imageURL = receipt.imageURL {
+            let url = NSURL(string: imageURL)
+            NSURLSe
+        }
+        
         return cell
     }
 }
