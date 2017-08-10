@@ -31,7 +31,7 @@ class Receipt {
     }
     init?(snapshot: DataSnapshot) {
         guard let dict = snapshot.value as? [String: Any],
-            let titleFromSnapshot = dict["title"] as? String,
+            let title = dict["title"] as? String,
             let amount = dict["amount"] as? Double,
             let description = dict["description"] as? String,
             let category = dict["category"] as? String,
@@ -42,7 +42,7 @@ class Receipt {
                 return nil
         }
         self.key = snapshot.key
-        self.title = titleFromSnapshot
+        self.title = title
     }
     
     var dictionaryToPostOnFirebase: [String: Any]? {

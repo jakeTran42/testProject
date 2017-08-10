@@ -340,7 +340,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="bdi-HC-2Z4" kind="relationship" relationship="rootViewController" id="sB7-0v-fX8"/>
+                        <segue destination="8B3-BE-rX2" kind="relationship" relationship="rootViewController" id="rlH-V8-H4Y"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxA-GU-OmV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,33 +348,49 @@
             <point key="canvasLocation" x="-537.68115942028987" y="515.21739130434787"/>
         </scene>
         <!--List of Transaction-->
-        <scene sceneID="ZX8-65-JPZ">
+        <scene sceneID="t8o-td-run">
             <objects>
-                <tableViewController id="bdi-HC-2Z4" customClass="HomeListViewController" customModule="TestProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="298" sectionHeaderHeight="28" sectionFooterHeight="28" id="2hj-wW-Yj7">
+                <viewController id="8B3-BE-rX2" customClass="HomeListViewController" customModule="TestProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ue3-TX-pAJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="xYL-Mm-oNV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FQG-oW-Cxh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="298" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VNq-AN-DPC">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FetchCell" rowHeight="298" id="isR-cX-j9N">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="298"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="isR-cX-j9N" id="Gzi-hb-ET1">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="297"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="298" id="fFd-5C-CLH">
-                                <rect key="frame" x="0.0" y="28" width="414" height="298"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fFd-5C-CLH" id="UU3-N7-qpH">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="297"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="bdi-HC-2Z4" id="rMz-Z3-kBw"/>
-                            <outlet property="delegate" destination="bdi-HC-2Z4" id="oSM-cp-qaJ"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="List of Transaction" id="eSA-v0-PXz"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VqM-4G-rug" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="VNq-AN-DPC" firstAttribute="top" secondItem="FQG-oW-Cxh" secondAttribute="top" id="PWU-om-D0M"/>
+                            <constraint firstAttribute="trailing" secondItem="VNq-AN-DPC" secondAttribute="trailing" id="elM-uk-UTH"/>
+                            <constraint firstItem="VNq-AN-DPC" firstAttribute="leading" secondItem="FQG-oW-Cxh" secondAttribute="leading" id="qWg-ph-EI0"/>
+                            <constraint firstItem="xYL-Mm-oNV" firstAttribute="top" secondItem="VNq-AN-DPC" secondAttribute="bottom" id="rnB-vG-rVu"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="List of Transaction" id="cl2-1r-CMW"/>
+                    <connections>
+                        <outlet property="tableView" destination="VNq-AN-DPC" id="VeM-6W-m3n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MVR-xR-En4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="312" y="515"/>
+            <point key="canvasLocation" x="289.85507246376812" y="514.4021739130435"/>
         </scene>
     </scenes>
     <resources>
