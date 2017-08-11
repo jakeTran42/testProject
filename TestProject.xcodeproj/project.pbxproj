@@ -94,9 +94,9 @@
 		6BFC4A041F34F7AA00D5C6F4 /* TestProject */ = {
 			isa = PBXGroup;
 			children = (
-				6B1825A81F3BEFAC005686AF /* View */,
 				6BFC4A051F34F7AA00D5C6F4 /* AppDelegate.swift */,
 				6BFC4A191F34F8B500D5C6F4 /* Controllers */,
+				6B1825A81F3BEFAC005686AF /* View */,
 				6BFC4A1A1F34F8C200D5C6F4 /* Storyboards */,
 				6BFC4A0C1F34F7AA00D5C6F4 /* Assets.xcassets */,
 				6BFC4A0E1F34F7AA00D5C6F4 /* LaunchScreen.storyboard */,

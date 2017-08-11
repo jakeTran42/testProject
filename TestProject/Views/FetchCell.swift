@@ -17,17 +17,26 @@ class FetchCell: UITableViewCell {
     @IBOutlet weak var categoryCellTitle: UILabel!
     @IBOutlet weak var locationcellTitle: UILabel!
     @IBOutlet weak var descriptionCellTitle: UILabel!
+    @IBOutlet weak var cellImageView: UIImageView!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.nameCellTitle.layer.cornerRadius = 12
-        self.dateCellTitle.layer.cornerRadius = 12
-        self.amountCellTitle.layer.cornerRadius = 12
-        self.categoryCellTitle.layer.cornerRadius = 12
-        self.locationcellTitle.layer.cornerRadius = 12
-        self.descriptionCellTitle.layer.cornerRadius = 20
+        nameCellTitle.layer.masksToBounds = true
+        dateCellTitle.layer.masksToBounds = true
+        amountCellTitle.layer.masksToBounds = true
+        categoryCellTitle.layer.masksToBounds = true
+        locationcellTitle.layer.masksToBounds = true
+        descriptionCellTitle.layer.masksToBounds = true
+        nameCellTitle.layer.cornerRadius = 8
+        dateCellTitle.layer.cornerRadius = 8
+        amountCellTitle.layer.cornerRadius = 8
+        categoryCellTitle.layer.cornerRadius = 8
+        locationcellTitle.layer.cornerRadius = 8
+        descriptionCellTitle.layer.cornerRadius = 8
+        cellImageView.layer.cornerRadius = cellImageView.frame.size.width/2
+        cellImageView.clipsToBounds = true
         
     }
 }

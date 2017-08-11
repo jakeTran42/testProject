@@ -43,6 +43,12 @@ class Receipt {
         }
         self.key = snapshot.key
         self.title = title
+        self.amount = amount
+        self.description = description
+        self.category = category
+        self.date = date
+        self.location = location
+        self.imageURL = imageURL
     }
     
     var dictionaryToPostOnFirebase: [String: Any]? {

@@ -25,7 +25,7 @@ class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     var pickedImage: UIImage?
     
     //VarCategoryPicker
-    var categoryData = ["", "Entertainment", "Food", "Grocery", "Ultility", "Banking", "Shopping", "Travel", "Others"]
+    var categoryData = ["", "Entertainment", "Food", "Grocery", "Ultility", "Banking", "Shopping", "Travel", "Personal", "Others"]
     var categoryPicker = UIPickerView()
     
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         categoryTextField.inputView = categoryPicker
         
         //AmounttextFieldConfig
-        amountTextField.keyboardType = UIKeyboardType.numberPad
+//        amountTextField.keyboardType = UIKeyboardType.
         self.amountTextField.delegate = self
         
         //textFieldConfig
@@ -52,6 +52,7 @@ class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         takeOrChooseImageButton.layer.cornerRadius = 12
         self.imageVIew.layer.borderColor = UIColor.gray.cgColor
         self.imageVIew.layer.borderWidth = 1.5
+        
         
         self.amountTextField.layer.borderColor = UIColor.gray.cgColor
         self.amountTextField.layer.borderWidth = 1.5
@@ -160,7 +161,6 @@ class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         return 1
     }
     
-    
     // returns the # of rows in each component..
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return categoryData.count
@@ -174,12 +174,13 @@ class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         return categoryData[row]
     }
     
+    
     //Amount text Config
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let allowedCharacters = CharacterSet.decimalDigits
-        let characterSet = CharacterSet(charactersIn: string)
-        return allowedCharacters.isSuperset(of: characterSet)
-    }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        let allowedCharacters = CharacterSet.decimalDigits
+//        let characterSet = CharacterSet(charactersIn: string)
+//        return allowedCharacters.isSuperset(of: characterSet)
+//    }
 
     @IBAction func saveButtonTapped(_ sender: Any) {
         
@@ -230,15 +231,15 @@ class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             
             
             let receiptRef = Database.database().reference().child("receipts").child(User.current.uid).childByAutoId()
+            let autoID = receiptRef.key
             receiptRef.updateChildValues(values!, withCompletionBlock: { (err, ref) in
                 if let _ = err {
                     return
                 }
                 
-                
                 ref.observeSingleEvent(of: .value, with: { (snapshot) in
                     let justPostedReceipt = Receipt(snapshot: snapshot)
-                    print("New receipt was created! Title: \(justPostedReceipt?.title)")
+                    print("New receipt was created! Title: \(String(describing: justPostedReceipt?.title))")
                 
                 })
             })

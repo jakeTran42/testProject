@@ -10,12 +10,13 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseDatabase
+import Kingfisher
 
 class HomeListViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     
-    var receipts = [Receipt]()
+    var receipts = [Receipt]() 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,23 +32,30 @@ class HomeListViewController: UIViewController {
     func fetchData() {
         Database.database().reference().child("receipts").child(User.current.uid).observe(.childAdded) { (snapshot: DataSnapshot) in
             
-            if let dict = snapshot.value as? [String: Any] {
-                
-                let imageURL = dict["imageURL"] as! String
-                let title = dict["title"] as! String
-                let description = dict["description"] as! String
-                let category = dict["category"] as! String
-                let date = dict["date"] as! String
-                let location = dict["location"] as! String
-                let amount = dict["amount"] as! Double
-                
-                let receipt = Receipt(imageURL: imageURL, title: title, description: description, category: category, date: date, location: location, amount: amount)
-                self.receipts.append(receipt)
-                self.tableView.reloadData()
+            guard let receipt = Receipt(snapshot: snapshot) else {
+                return
             }
+            
+            self.receipts.append(receipt)
+            self.tableView.reloadData()
+
+            
+//            if let dict = snapshot.value as? [String: Any] {
+//                
+//                let imageURL = dict["imageURL"] as! String
+//                let title = dict["title"] as! String
+//                let description = dict["description"] as! String
+//                let category = dict["category"] as! String
+//                let date = dict["date"] as! String
+//                let location = dict["location"] as! String
+//                let amount = dict["amount"] as! Double
+//                let key = snapshot.key
+//                
+//                let receipt = Receipt(key: key, imageURL: imageURL, title: title, description: description, category: category, date: date, location: location, amount: amount)
+//
+//            }
         }
     }
-   
 }
 
 extension HomeListViewController: UITableViewDataSource {
@@ -71,12 +79,48 @@ extension HomeListViewController: UITableViewDataSource {
         cell.locationcellTitle.text = receipt.location
         cell.descriptionCellTitle.text = receipt.description
         
-        if let imageURL = receipt.imageURL {
-            let url = NSURL(string: imageURL)
-            NSURLSe
-        }
+        
+        let url = URL(string: receipt.imageURL)
+        cell.cellImageView.kf.setImage(with: url)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            let receiptToDelete = receipts[indexPath.row]
+            let key = receiptToDelete.key
+            self.receipts.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
+            tableView.reloadData()
+            let dispatchGroup = DispatchGroup()
+            dispatchGroup.enter()
+            let firebaseRef = Database.database().reference().child("receipts").child(User.current.uid).child(key!)
+            firebaseRef.removeValue(completionBlock: { (err, ref) in
+                if err == nil {
+                    print("deleted")
+                    
+                    dispatchGroup.leave()
+                    
+                }
+            })
+            
+            dispatchGroup.notify(queue: .main, execute: {
+            })
+            
+            
+            
+//            firebaseRef.queryOrdered(byChild: User.current.uid).queryEqual(toValue: User.current.uid).observe(.childAdded, with: { (snapshot) in
+//                
+//                snapshot.ref.removeValue(completionBlock: { (Err, ref) in
+//                    if Err != nil {
+//                        print("Error: \(Err!)")
+//                    }
+//                })
+//            })
+        }
+        
     }
 }
 
