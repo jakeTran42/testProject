@@ -20,6 +20,8 @@ class ProfileViewController: UIViewController {
         
         checkIfUserIsLoggedIn()
         
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,14 +29,12 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    func checkIfUserIsLoggedIn() {
-//        if Auth.auth().currentUser?.uid == nil {
-//            perform(#selector(handleLogout), with: nil, afterDelay: 0)
-//        }
+
     func checkIfUserIsLoggedIn() {
-        if Auth.auth().currentUser?.uid == nil {
+        if User.current == nil {
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
         }
+        
     }
 
 

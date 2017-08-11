@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import FirebaseAuthUI
+import Firebase
 
 class TabBarViewController: UITabBarController {
     
@@ -17,5 +19,4 @@ class TabBarViewController: UITabBarController {
         //self.tabBar.barTintColor = UIColor.
         
     }
-    
 }

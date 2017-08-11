@@ -69,9 +69,9 @@
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="cic-k5-1pH" kind="relationship" relationship="viewControllers" id="CpG-ww-ARm"/>
                         <segue destination="KV4-9a-MAd" kind="relationship" relationship="viewControllers" id="JbF-DK-vZ6"/>
                         <segue destination="I0o-wi-eoX" kind="relationship" relationship="viewControllers" id="iSg-Ri-b7y"/>
+                        <segue destination="cic-k5-1pH" kind="relationship" relationship="viewControllers" id="CpG-ww-ARm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bm-l2-7RJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

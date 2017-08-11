@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import Kingfisher
+import FirebaseAuthUI
 
 class HomeListViewController: UIViewController {
 
@@ -21,16 +22,18 @@ class HomeListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        
         tableView.dataSource = self
-        
-        
         
         fetchData()
         
     }
+
+    
     
     func fetchData() {
-        Database.database().reference().child("receipts").child(User.current.uid).observe(.childAdded) { (snapshot: DataSnapshot) in
+        Database.database().reference().child("receipts").child((User.current?.uid)!).observe(.childAdded) { (snapshot: DataSnapshot) in
             
             guard let receipt = Receipt(snapshot: snapshot) else {
                 return
@@ -96,7 +99,7 @@ extension HomeListViewController: UITableViewDataSource {
             tableView.reloadData()
             let dispatchGroup = DispatchGroup()
             dispatchGroup.enter()
-            let firebaseRef = Database.database().reference().child("receipts").child(User.current.uid).child(key!)
+            let firebaseRef = Database.database().reference().child("receipts").child((User.current?.uid)!).child(key!)
             firebaseRef.removeValue(completionBlock: { (err, ref) in
                 if err == nil {
                     print("deleted")

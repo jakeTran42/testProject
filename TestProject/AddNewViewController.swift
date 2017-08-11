@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseStorage
+import FirebaseDatabase
 
 class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -80,7 +81,6 @@ class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
     
     
     @IBAction func takeOrChooseImagePress(_ sender: Any) {
@@ -230,7 +230,7 @@ class AddNewViewController: UIViewController, UITextFieldDelegate, UIImagePicker
 
             
             
-            let receiptRef = Database.database().reference().child("receipts").child(User.current.uid).childByAutoId()
+            let receiptRef = Database.database().reference().child("receipts").child((User.current?.uid)!).childByAutoId()
             let autoID = receiptRef.key
             receiptRef.updateChildValues(values!, withCompletionBlock: { (err, ref) in
                 if let _ = err {
